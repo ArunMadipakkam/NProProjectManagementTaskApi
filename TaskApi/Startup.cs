@@ -29,6 +29,7 @@ namespace ProjectManagement
             // Add other services
             
             services.AddScoped<ITaskManagementServices, TaskManagementServices>();
+            services.AddCors();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -46,9 +47,16 @@ namespace ProjectManagement
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            });
 
             app.UseAuthentication();
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {
