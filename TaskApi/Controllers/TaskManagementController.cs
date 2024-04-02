@@ -89,23 +89,7 @@ namespace ProjectManagement.Controllers
             }
         }
 
-        // POST: api/TaskManagement/SaveTaskDetail
-        [HttpPost("SaveTaskDetail")]
-        public async Task<ActionResult> SaveTaskDetail(TaskManagementDTO taskManagementDTO)
-        {
-            try
-            {
-                // Retrieve the task details by ID from the service
-                var taskDetails = await _taskManagementServices.GetTaskCount();
-                // Return the task details as a success response
-                return Ok(taskDetails);
-            }
-            catch (Exception ex)
-            {
-                // Return an error response if an exception occurs during processing
-                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-            }
-        }
+       
 
         // POST: api/TaskManagement/SaveTaskDetail
         //[HttpPost("SaveTaskDetail")]
